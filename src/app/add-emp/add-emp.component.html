@@ -1,0 +1,51 @@
+<body style="background-color: aquamarine;">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h3 class="text-center" style="background-color: cadetblue; color: blue; padding: 3%;">{{ empformlabel }}</h3>
+      <form [formGroup]="addForm" novalidate class="form" style="max-width: 400px; margin: auto;">
+        <div class="form-group">
+          <label for="empId">Employee Id:</label>
+          <input type="number" formControlName="id" placeholder="Id" name="empId" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="empName">Employee Name:</label>
+          <input formControlName="employee_name" placeholder="Employee Name" name="empName" class="form-control">
+          <div class="alert alert-danger" *ngIf="addForm.get('employee_name')!.hasError('required') && addForm.get('employee_name')!.touched">
+            Employee Name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="empEmail">Email ID:</label>
+          <input formControlName="employee_email" placeholder="Employee Email ID" name="empEmail" class="form-control">
+          <div class="alert alert-danger" *ngIf="addForm.get('employee_email')!.hasError('required') && addForm.get('employee_email')!.touched">
+            Employee Email ID is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="empSalary">Employee Salary:</label>
+          <input formControlName="employee_salary" placeholder="Employee Salary" name="employee_salary" class="form-control">
+          <div class="alert alert-danger" *ngIf="addForm.get('employee_salary')!.hasError('maxlength') && addForm.get('employee_salary')!.touched">
+            Employee Salary is required and should be less than 9 characters.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="empAge">Employee Age:</label>
+          <input formControlName="employee_age" placeholder="Employee Age" name="empAge" class="form-control">
+          <div class="alert alert-danger" *ngIf="addForm.get('employee_age')!.hasError('maxlength') && addForm.get('employee_age')!.touched">
+            Age is required and should be less than 3 characters.
+          </div>
+        </div>
+
+        <button class="btn btn-success btn-block" [disabled]="addForm.invalid" (click)="btnvisibility ? onSubmit() : onUpdate()">
+          {{ btnvisibility ? 'Save' : 'Update' }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+</body>

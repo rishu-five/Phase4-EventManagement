@@ -1,0 +1,38 @@
+<app-home></app-home>
+<div class="details-container">
+  <div class="details-box">
+    <p>Details of</p>
+    <h3>{{employeess.employee_name}}</h3>
+  </div>
+  <table class="table-details" *ngIf="employeess">
+    <tbody>
+      <tr>
+        <td>Id</td>
+        <td>{{employeess.id}}</td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>{{employeess.employee_name}}</td>
+      </tr>
+      <tr>
+        <td>Email ID</td>
+        <td>{{employeess.employee_email}}</td>
+      </tr>
+      <tr>
+        <td>Age</td>
+        <td>{{employeess.employee_age}}</td>
+      </tr>
+      <tr>
+        <td>Salary</td>
+        <td>{{employeess.employee_salary}}</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="action-buttons">
+          <button (click)="deleteEmp(employeess)" routerLink="/list-emp" class="btn btn-danger">Delete</button>
+          <button (click)="editEmp(employeess)" class="btn btn-secondary">Edit</button>
+          <button routerLink="/list-emp" class="btn btn-primary">Employees List</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

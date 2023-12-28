@@ -1,0 +1,60 @@
+<body style="background-color:aquamarine;">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center mb-4" style="color: rgb(134, 132, 33); background-color: cadetblue">
+        {{ empformlabel }}
+      </h2>
+      <form [formGroup]="editForm" novalidate class="form">
+        <table class="table table-bordered" style="background-color:coral;">
+          <tr>
+            <td><label for="empId">Employee Id:</label></td>
+            <td><input type="number" formControlName="id" placeholder="Id" name="empId" class="form-control" style="background-color: azure;"></td>
+          </tr>
+          <tr>
+            <td><label for="empName">Employee Name:</label></td>
+            <td>
+              <input formControlName="employee_name" placeholder="Employee Name" name="empName" class="form-control" style="background-color: azure;">
+              <div class="alert alert-danger" *ngIf="editForm.get('employee_name')!.hasError('required') && editForm.get('employee_name')!.touched">
+                Employee Name is required
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="empEmail">Employee Email:</label></td>
+            <td>
+              <input formControlName="employee_email" placeholder="Employee Email" name="empEmail" class="form-control" style="background-color: azure;">
+              <div class="alert alert-danger" *ngIf="editForm.get('employee_email')!.hasError('required') && editForm.get('employee_email')!.touched">
+                Employee Email is required
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="empSalary">Employee Salary:</label></td>
+            <td>
+              <input type="number" formControlName="employee_salary" placeholder="Employee Salary" name="empSalary" class="form-control" style="background-color: azure;">
+              <div class="alert alert-danger" *ngIf="editForm.get('employee_salary')!.hasError('required') && editForm.get('employee_salary')!.touched">
+                Employee Salary is required
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="empAge">Employee Age:</label></td>
+            <td>
+              <input type="number" formControlName="employee_age" placeholder="Employee Age" name="empAge" class="form-control" style="background-color: azure;">
+              <div class="alert alert-danger" *ngIf="editForm.get('employee_age')!.hasError('required') && editForm.get('employee_age')!.touched">
+                Employee Age is required
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button class="btn btn-success btn-block" [disabled]="editForm.invalid" style="color:white;background-color:rgb(28, 189, 28)" (click)="onUpdate()">Update</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
